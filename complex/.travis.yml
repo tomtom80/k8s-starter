@@ -14,7 +14,7 @@ before_install:
   - gcloud config set project winged-fusion-240820
   - gcloud config set compute/zone europe-west3-b
   - gcloud container clusters get-credentials tomkube
-  - echo "DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t tomtom80/react-test -f ./client/Dockerfile.dev ./client
 
 script: 
