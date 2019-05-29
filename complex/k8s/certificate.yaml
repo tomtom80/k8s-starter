@@ -1,0 +1,20 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: k8s-swaglist-me-tls
+spec:
+  secretName: k8s-swaglist-me
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: swaglist.me
+  dnsNames:
+    - swaglist.me
+    - www.swaglist.me
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - swaglist.me
+          - www.swaglist.me

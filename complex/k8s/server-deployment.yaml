@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       component: server
-  template: 
+  template:
     metadata:
       labels:
         component: server
@@ -17,7 +17,7 @@ spec:
           image: stephengrider/multi-server
           ports:
             - containerPort: 5000
-          env: 
+          env:
             - name: REDIS_HOST
               value: redis-cluster-ip-service
             - name: REDIS_PORT
@@ -28,6 +28,8 @@ spec:
               value: postgres-cluster-ip-service
             - name: PGPORT
               value: '5432'
+            - name: PGDATABASE
+              value: postgres
             - name: PGPASSWORD
               valueFrom:
                 secretKeyRef:
